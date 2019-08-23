@@ -6,7 +6,7 @@ export class Results extends React.Component {
 		let bookList = [];
 		let searchResults = this.props.searchResults && this.props.searchResults[0];
 
-		console.log('SEARCH RESULTS = ', searchResults);
+		console.log('inside Results SEARCH RESULTS = ', searchResults);
 
 		if (searchResults) {
 			console.log('in results - searchResults items');
