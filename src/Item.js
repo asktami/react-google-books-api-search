@@ -54,7 +54,7 @@ export class Item extends React.Component {
 						<br />
 						Price: {price}
 					</div>
-					<ItemButtons />
+					<ItemButtons link={book.saleInfo.buyLink} />
 				</div>
 				<div className="item-description">
 					<img
