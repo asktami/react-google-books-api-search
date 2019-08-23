@@ -12,7 +12,7 @@ export class Results extends React.Component {
 			console.log('in results - searchResults items');
 
 			let bookList = searchResults.items.map((book, index) => {
-				console.log(book.volumeInfo.title);
+				// console.log(book.volumeInfo.title);
 				return <Item key={index} book={book} />;
 			});
 			console.log('bookList length = ', bookList.length);
@@ -22,7 +22,7 @@ export class Results extends React.Component {
 		return (
 			<section id="results">
 				<h2>Search Results</h2>
-				{bookList}
+				<ul>{bookList}</ul>
 			</section>
 		);
 	}
