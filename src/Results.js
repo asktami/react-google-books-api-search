@@ -3,7 +3,7 @@ import { Item } from './Item';
 
 export class Results extends React.Component {
 	render() {
-		let bookList = [];
+		const bookList = [];
 		let searchResults = this.props.searchResults && this.props.searchResults[0];
 
 		console.log('inside Results SEARCH RESULTS = ', searchResults);
@@ -11,7 +11,7 @@ export class Results extends React.Component {
 		if (searchResults) {
 			console.log('in results - searchResults items');
 
-			let bookList = searchResults.items.map((book, index) => {
+			const bookList = searchResults.items.map((book, index) => {
 				// console.log(book.volumeInfo.title);
 				return <Item key={index} book={book} />;
 			});
