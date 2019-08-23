@@ -27,7 +27,7 @@ body {
 			rgba(255, 255, 255, 0.4),
 			rgba(255, 255, 255, 0)
 		),
-		url(img/wall.png);
+		/*url(img/wall.png) */;
 	background-attachment: scroll;
 }
 a {
@@ -199,6 +199,10 @@ h3 {
 }
 h3 {
 	font-size: 18px;
+}
+
+#results {
+	color: #000;
 }
 
 ul {
