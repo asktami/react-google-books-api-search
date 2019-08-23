@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-google-books-api-search/static/css/main.86858196.chunk.css",
+    "main.js": "/react-google-books-api-search/static/js/main.e192d6ad.chunk.js",
+    "main.js.map": "/react-google-books-api-search/static/js/main.e192d6ad.chunk.js.map",
+    "runtime~main.js": "/react-google-books-api-search/static/js/runtime~main.e0bb40fc.js",
+    "runtime~main.js.map": "/react-google-books-api-search/static/js/runtime~main.e0bb40fc.js.map",
+    "static/js/2.105aead3.chunk.js": "/react-google-books-api-search/static/js/2.105aead3.chunk.js",
+    "static/js/2.105aead3.chunk.js.map": "/react-google-books-api-search/static/js/2.105aead3.chunk.js.map",
+    "index.html": "/react-google-books-api-search/index.html",
+    "precache-manifest.ef7551a3715b99b1573b484b42f919f2.js": "/react-google-books-api-search/precache-manifest.ef7551a3715b99b1573b484b42f919f2.js",
+    "service-worker.js": "/react-google-books-api-search/service-worker.js",
+    "static/css/main.86858196.chunk.css.map": "/react-google-books-api-search/static/css/main.86858196.chunk.css.map",
+    "static/media/App.css": "/react-google-books-api-search/static/media/wall.d63cd003.png"
+  }
+}
