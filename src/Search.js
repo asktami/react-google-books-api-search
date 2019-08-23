@@ -4,6 +4,7 @@ const printTypes = ['all', 'books', 'magazines'];
 const bookTypes = ['partial', 'full', 'free-ebooks', 'paid-ebooks', 'ebooks'];
 
 const apiKey = 'AIzaSyCIxIIcpTwWrV5HmCj_q4AWZRAqD7y6CFI';
+const apiURL = 'https://www.googleapis.com/books/v1/volumes';
 
 export class Search extends React.Component {
 	state = {
@@ -12,13 +13,17 @@ export class Search extends React.Component {
 		bookType: 'full'
 	};
 
+	// QUESTION - WHY DOESN'T THIS WORK?
+	// const {searchTerm, printType, bookType} = this.state;
+
 	handleChange = event => {
 		const {
 			target: { name, value }
 		} = event;
 		this.setState({ [name]: value });
-		console.log('name = ', name);
-		console.log('value = ', value);
+
+		// QUESTION - WHY DOESN'T THIS WORK?
+		// console.log({this.state.searchTerm});
 	};
 
 	handleSubmit(e) {
@@ -27,11 +32,13 @@ export class Search extends React.Component {
 	}
 
 	fetchBooks = () => {
-		const getURL = `https://www.googleapis.com/books/v1/volumes?key=${apiKey}&langRestrict=en&maxResults=40&orderBy=relevance&q=${
+		const getURL = `${apiURL}?key=${apiKey}&langRestrict=en&maxResults=40&orderBy=relevance&q=${
 			this.state.searchTerm
 		}&filter=${this.state.bookType}&printType=${this.state.printType}`;
 
+		console.log(getURL);
 		/*
+		QUESTION: THIS DOES NOT WORK - WHY ?
 		const getURL = 'https://www.googleapis.com/books/v1/volumes';
 		const options = {
 			method: 'GET',
@@ -47,8 +54,6 @@ export class Search extends React.Component {
 			})
 		};
 		*/
-
-		console.log('getURL = ', JSON.stringify(getURL));
 
 		fetch(getURL)
 			.then(res => {

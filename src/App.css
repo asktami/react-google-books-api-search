@@ -16,7 +16,7 @@ select,
 input::placeholder {
 	font-family: 'Sintony', sans-serif;
 	-webkit-font-smoothing: antialiased;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 300;
 	text-align: center;
 }
@@ -99,7 +99,6 @@ img {
 	padding-right: 10px;
 	width: auto;
 	height: 100%;
-	max-height: 20vh;
 }
 
 form {
@@ -211,7 +210,7 @@ li {
 .item {
 	border: 1px solid silver;
 	padding: 20px;
-	margin: 20px 0;
+	margin: 20px;
 }
 
 .item-header {

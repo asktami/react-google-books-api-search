@@ -2,40 +2,59 @@ import React from 'react';
 import { Item } from './Item';
 
 export class Results extends React.Component {
+	// QUESTION - IS THIS THE CORRECT PLACE FOR THIS?
+	componentDidMount() {
+		this.props.goToResults();
+	}
+
 	render() {
-		const bookList = [];
-		let searchResults = this.props.searchResults && this.props.searchResults[0];
+		const { searchResults } = this.props;
 
-		console.log('inside Results SEARCH RESULTS = ', searchResults);
+		let bookList = [];
 
-		if (searchResults) {
-			console.log('in results - searchResults items');
+		console.log(searchResults[0].totalItems);
 
-			const bookList = searchResults.items.map((book, index) => {
-				// console.log(book.volumeInfo.title);
+		if (
+			searchResults[0] &&
+			searchResults[0].totalItems &&
+			searchResults[0].items
+		) {
+			bookList = searchResults[0].items.map((book, index) => {
 				return <Item key={index} book={book} />;
 			});
-			console.log('bookList length = ', bookList.length);
-			console.log('bookList = ', bookList);
 		}
 
 		return (
 			<section id="results">
 				<h2>Search Results</h2>
-				<ul>{bookList}</ul>
+				<ul id="results-list" className="item-list">
+					{!bookList.length ? 'No books found!' : <>{bookList}</>}
+				</ul>
 			</section>
 		);
 	}
 }
 
 /*
-{bookList.length > 0 ? (
+//
+WORKS:
+<section id="results">
+				{bookList ? <h2>Search Results</h2> : null}
+				<ul id="results-list" className="item-list">
+					{bookList.length > 0 ? <>{bookList}</> : <li>No books found!</li>}
+				</ul>
+			</section>
+
+//
+WORKS:
+			return !bookList.length ? (
+			'No books found!'
+		) : (
+			<section id="results">
 				<h2>Search Results</h2>
-					<ul id="results-list" className="item-list">
-						{bookList}
-					</ul>
-				) : (
-					<h2>Search Results</h2>
-					'No books to display!'
-				)}
-			*/
+				<ul id="results-list" className="item-list">
+					{bookList}
+				</ul>
+			</section>
+		);
+ */

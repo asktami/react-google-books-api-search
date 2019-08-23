@@ -1,41 +1,39 @@
 import React from 'react';
-// import { ItemButtons } from './ItemButtons';
-
-/*
-					title = book.volumeInfo.title;
-					subtitle = book.volumeInfo.subtitle;
-					description = book.volumeInfo.description;
-					price = book.saleInfo.retailPrice.amount;
-					currency = book.saleInfo.retailPrice.currencyCode;
-					smallThumbnail = book.volumeInfo.imageLinks.smallThumbnail;
-					thumbnail = book.volumeInfo.imageLinks.thumbnail;
-
-if (book.volumeInfo.authors !== undefined) {
-						for (let a = 0; a <= book.volumeInfo.authors.length; a++) {
-							console.log(book.volumeInfo.authors[a]);
-							authors.push(book.volumeInfo.authors[a]);
-						}
-					}
-					*/
+import { ItemButtons } from './ItemButtons';
 
 export class Item extends React.Component {
 	render() {
-		console.log('inITEM');
-		console.log(JSON.stringify(this.props.book.volumeInfo.title));
-
 		const { book } = this.props;
+
+		const imgPlaceholderURL = 'https://via.placeholder.com/150';
+
 		const authorList = getAuthorList(book);
 		const smallThumbnail = getSmallThumbnail(book);
-		const imgPlaceholderURL = 'https://via.placeholder.com/150';
+		const price = getPrice(book);
 
 		function getAuthorList(book) {
 			let authorList = book.volumeInfo && book.volumeInfo.authors;
+
+			let authors = [];
 			if (!authorList) {
-				return <span>No authors to display</span>;
+				return 'N/A';
 			}
-			return authorList.map((author, index) => {
-				return <span key={index}>{author}</span>;
-			});
+			authorList.map((author, index) => authors.push(author));
+
+			return authors.join(', ');
+		}
+
+		function getPrice(book) {
+			let price = book.saleInfo.retailPrice && book.saleInfo.retailPrice.amount;
+
+			let currency =
+				book.saleInfo.retailPrice && book.saleInfo.retailPrice.currencyCode;
+
+			if (!price) {
+				return 'N/A';
+			}
+
+			return `${price} ${currency}`;
 		}
 
 		function getSmallThumbnail(book) {
@@ -47,40 +45,25 @@ export class Item extends React.Component {
 		}
 
 		return (
-			<li>
-				{book.volumeInfo.title}
-				<br />
-				{authorList}
-				<br />
-				<img
-					src={smallThumbnail}
-					alt={smallThumbnail ? book.volumeInfo.title : 'no-image'}
-				/>
-			</li>
-
-			/*
 			<li className="item">
 				<div className="item-header">
 					<div className="item-subhead">
 						{book.volumeInfo.title}
 						<br />
-						{book.volumeInfo.subtitle}
+						Author: {authorList}
 						<br />
-						Author: this.props.authors.join(', ')
-						<br />
-						Price: {this.props.saleInfo.retailPrice.amount}{' '}
-						{this.props.saleInfo.retailPrice.currencyCode}
+						Price: {price}
 					</div>
-
 					<ItemButtons />
 				</div>
-
 				<div className="item-description">
-					<img src="https://via.placeholder.com/150" alt="imageName" />
-					{this.props.volumeInfo.description}
+					<img
+						src={smallThumbnail}
+						alt={smallThumbnail ? book.volumeInfo.title : 'no-image'}
+					/>
+					{book.volumeInfo.description}
 				</div>
 			</li>
-		*/
 		);
 	}
 }
