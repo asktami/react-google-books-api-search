@@ -9,11 +9,11 @@ class App extends React.Component {
 		searchResults: []
 	};
 
-	updateResults(data) {
+	updateResults = data => {
 		this.setState({
 			searchResults: [data]
 		});
-	}
+	};
 
 	render() {
 		return (
