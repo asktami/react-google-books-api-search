@@ -10,12 +10,40 @@ class App extends React.Component {
 		super(props);
 		this.ref_SearchForm = React.createRef();
 		this.ref_SearchResults = React.createRef();
-		this.ref_BackToTop = React.createRef();
 	}
 
 	state = {
-		searchResults: []
+		searchResults: [],
+		showBackToTop: false
 	};
+
+	// btnBackToTop = document.getElementById('back-to-top');
+
+	handleScroll = () => {
+		if (window.scrollY === 0) {
+			// back to top
+			// hide back to top button
+			// this.btnBackToTop.style.display = '';
+			this.setState({
+				showBackToTop: false
+			});
+		} else {
+			// scrolling
+			// show back to top button
+			// this.btnBackToTop.style.display = 'block';
+			this.setState({
+				showBackToTop: true
+			});
+		}
+	};
+
+	componentDidMount() {
+		window.addEventListener('scroll', this.handleScroll);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.handleScroll);
+	}
 
 	updateResults = data => {
 		this.setState({
@@ -33,36 +61,26 @@ class App extends React.Component {
 			behavior: 'smooth'
 		});
 
-		// localName=main
-		// console.log('el.current.localName = ', el.current.localName);
-		// id=main
-		// console.log('el.current.id = ', el.current.id);
+		// *****************************************
+		// replaced with handleScroll
+		// if (el.current.localName === 'header') {
+		// 	// went to top
+		// 	// hide back to top button
+		// 	// btnBackToTop.style.display = '';
+		// 	this.setState({
+		// 		showBackToTop: false
+		// 	});
+		// }
 
-		if (el.current.localName === 'header') {
-			// went to top
-			// hide back to top button
-			const btnBackToTop = document.getElementById('back-to-top');
-			btnBackToTop.style.display = '';
-		}
-
-		if (el.current.localName === 'main') {
-			// went to searchResults
-			// show back to top button
-			const btnBackToTop = document.getElementById('back-to-top');
-			btnBackToTop.style.display = 'block';
-		}
+		// if (el.current.localName === 'main') {
+		// 	// went to searchResults
+		// 	// show back to top button
+		// 	// btnBackToTop.style.display = 'block';
+		// 	this.setState({
+		// 		showBackToTop: true
+		// 	});
+		// }
 	};
-
-	/*
-	goBackToTop = () => {
-		window.scrollTo({
-			top: 0
-		});
-		// hide back to top button
-		const btnBackToTop = document.getElementById('back-to-top');
-		btnBackToTop.style.display = '';
-	};
-	*/
 
 	render() {
 		return (
@@ -81,6 +99,7 @@ class App extends React.Component {
 					{this.state.searchResults.length > 0 ? (
 						<BackToTop
 							goBackToTop={() => this.scrollToRef(this.ref_SearchForm)}
+							showBackToTop={this.state.showBackToTop}
 						/>
 					) : null}
 					<span>
