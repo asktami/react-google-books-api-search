@@ -56,12 +56,14 @@ export class Item extends React.Component {
 					</div>
 					<ItemButtons link={book.saleInfo.buyLink} />
 				</div>
-				<div className="item-description">
-					<img
-						src={smallThumbnail}
-						alt={smallThumbnail ? book.volumeInfo.title : 'no-image'}
-					/>
-					{book.volumeInfo.description}
+				<div className="item-description-container">
+					<div className="item-description">
+						<img
+							src={smallThumbnail}
+							alt={smallThumbnail ? book.volumeInfo.title : 'no-image'}
+						/>
+						{book.volumeInfo.description}
+					</div>
 				</div>
 			</li>
 		);

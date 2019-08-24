@@ -32,11 +32,11 @@ export class Search extends React.Component {
 	}
 
 	fetchBooks = () => {
-		const getURL = `${apiURL}?key=${apiKey}&langRestrict=en&maxResults=40&orderBy=relevance&q=${
-			this.state.searchTerm
-		}&filter=${this.state.bookType}&printType=${this.state.printType}`;
+		const getURL = `${apiURL}?key=${apiKey}&langRestrict=en&maxResults=40&orderBy=relevance&q=${this.state.searchTerm}&filter=${this.state.bookType}&printType=${this.state.printType}`;
 
 		console.log(getURL);
+		console.log(JSON.stringify(this.state.searchTerm, null, 2));
+
 		/*
 		QUESTION: THIS DOES NOT WORK - WHY ?
 		const getURL = 'https://www.googleapis.com/books/v1/volumes';

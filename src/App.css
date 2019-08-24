@@ -97,8 +97,6 @@ section {
 img {
 	float: left;
 	padding-right: 10px;
-	width: auto;
-	height: 100%;
 }
 
 form {
@@ -135,10 +133,12 @@ input {
 	width: 300px;
 	margin: 20px 0;
 }
+
+/*
 input:focus {
-	/* outline: 3px solid ghostwhite;
-*/
+ outline: 3px solid ghostwhite;
 }
+*/
 
 button {
 	border: 3px solid ghostwhite;
@@ -223,7 +223,7 @@ li {
 	text-align: left;
 }
 
-.item-description {
+.item-description-container {
 	display: flex;
 	margin-top: 10px;
 	text-align: left;
