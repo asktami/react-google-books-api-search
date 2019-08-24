@@ -84,15 +84,7 @@ class App extends React.Component {
 						/>
 					) : null}
 					<span>
-						<a
-							href="https://icons8.com/icon/7695/search-filled"
-							title="Search icon at Icons8.com"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							Icons by Icons8
-						</a>{' '}
-						• Photo by Ria Puskas on Unsplash • Built by{' '}
+						Photo by Ria Puskas on Unsplash • Built by{' '}
 						<a
 							href="http://www.asktami.com"
 							target="_blank"
