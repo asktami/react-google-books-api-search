@@ -112,6 +112,19 @@ legend {
 	align-items: center;
 }
 
+@media all and (min-width: 768px) /* Tablet & iPad Pro & above */ {
+	.select-container {
+		flex-direction: row;
+	}
+}
+
+/* iPad */
+@media only screen and (max-width: 768px) {
+	.select-container {
+		flex-direction: column;
+	}
+}
+
 select {
 	width: 200px;
 	margin-right: 10px;

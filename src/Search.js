@@ -13,47 +13,24 @@ export class Search extends React.Component {
 		bookType: 'full'
 	};
 
-	// QUESTION - WHY DOESN'T THIS WORK?
-	// const {searchTerm, printType, bookType} = this.state;
-
 	handleChange = event => {
 		const {
 			target: { name, value }
 		} = event;
 		this.setState({ [name]: value });
-
-		// QUESTION - WHY DOESN'T THIS WORK?
-		// console.log({this.state.searchTerm});
 	};
 
 	handleSubmit(e) {
 		e.preventDefault();
 		this.fetchBooks();
+		// show results when click search
 	}
 
 	fetchBooks = () => {
 		const getURL = `${apiURL}?key=${apiKey}&langRestrict=en&maxResults=40&orderBy=relevance&q=${this.state.searchTerm}&filter=${this.state.bookType}&printType=${this.state.printType}`;
 
-		console.log(getURL);
-		console.log(JSON.stringify(this.state.searchTerm, null, 2));
-
-		/*
-		QUESTION: THIS DOES NOT WORK - WHY ?
-		const getURL = 'https://www.googleapis.com/books/v1/volumes';
-		const options = {
-			method: 'GET',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				key: apiKey,
-				langRestrict: 'en',
-				maxResults: '40',
-				orderBy: 'relevance',
-				q: this.state.searchTerm,
-				filter: this.state.bookType,
-				printType: this.state.printType
-			})
-		};
-		*/
+		// console.log(getURL);
+		// console.log(JSON.stringify(this.state.searchTerm, null, 2));
 
 		fetch(getURL)
 			.then(res => {
@@ -122,6 +99,7 @@ export class Search extends React.Component {
 							</select>
 						</label>
 						<label htmlFor="bookType">
+							Book Type{' '}
 							<select
 								id="bookType"
 								name="bookType"

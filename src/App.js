@@ -24,7 +24,6 @@ class App extends React.Component {
 	};
 
 	backToTop = event => {
-		// alert('clicked back to Top');
 		scrollTo(document.getElementById('head'));
 		// hide back to top button
 		const btnBackToTop = document.getElementById('back-to-top');
@@ -32,7 +31,6 @@ class App extends React.Component {
 	};
 
 	goToResults = event => {
-		// alert('clicked go to Results');
 		scrollTo(document.getElementById('results'));
 		// show the back to top button, hidden by default via stylesheet
 		const btnBackToTop = document.getElementById('back-to-top');

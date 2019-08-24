@@ -2,7 +2,6 @@ import React from 'react';
 import { Item } from './Item';
 
 export class Results extends React.Component {
-	// QUESTION - IS THIS THE CORRECT PLACE FOR THIS?
 	componentDidMount() {
 		this.props.goToResults();
 	}
@@ -11,8 +10,6 @@ export class Results extends React.Component {
 		const { searchResults } = this.props;
 
 		let bookList = [];
-
-		console.log(searchResults[0].totalItems);
 
 		if (
 			searchResults[0] &&
@@ -34,27 +31,3 @@ export class Results extends React.Component {
 		);
 	}
 }
-
-/*
-//
-WORKS:
-<section id="results">
-				{bookList ? <h2>Search Results</h2> : null}
-				<ul id="results-list" className="item-list">
-					{bookList.length > 0 ? <>{bookList}</> : <li>No books found!</li>}
-				</ul>
-			</section>
-
-//
-WORKS:
-			return !bookList.length ? (
-			'No books found!'
-		) : (
-			<section id="results">
-				<h2>Search Results</h2>
-				<ul id="results-list" className="item-list">
-					{bookList}
-				</ul>
-			</section>
-		);
- */
