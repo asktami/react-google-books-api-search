@@ -4,9 +4,15 @@ export class ItemButtons extends React.Component {
 	render() {
 		return (
 			<div className="item-buttons">
-				<a href={this.props.link} target="_blank" rel="noopener noreferrer">
-					view
-				</a>
+				{this.props.link ? (
+					<a href={this.props.link} target="_blank" rel="noopener noreferrer">
+						view
+					</a>
+				) : (
+					<em>
+						<small>no link</small>
+					</em>
+				)}
 			</div>
 		);
 	}
