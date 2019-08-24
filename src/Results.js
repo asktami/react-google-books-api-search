@@ -2,10 +2,6 @@ import React from 'react';
 import { Item } from './Item';
 
 export class Results extends React.Component {
-	componentDidMount() {
-		this.props.goToResults();
-	}
-
 	render() {
 		const { searchResults } = this.props;
 

@@ -1,18 +1,18 @@
 import React from 'react';
 import { Search } from './Search';
 import { Results } from './Results';
+import { BackToTop } from './BackToTop';
 
 import './App.css';
 
-function scrollTo(element) {
-	window.scroll({
-		behavior: 'smooth',
-		left: 0,
-		top: element.offsetTop
-	});
-}
-
 class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.ref_SearchForm = React.createRef();
+		this.ref_SearchResults = React.createRef();
+		this.ref_BackToTop = React.createRef();
+	}
+
 	state = {
 		searchResults: []
 	};
@@ -21,50 +21,67 @@ class App extends React.Component {
 		this.setState({
 			searchResults: [data]
 		});
+
+		// go to searchResults
+		this.scrollToRef(this.ref_SearchResults);
 	};
 
-	backToTop = event => {
-		scrollTo(document.getElementById('head'));
+	// General scroll to element function
+	scrollToRef = el => {
+		window.scrollTo({
+			top: el.current.offsetTop,
+			behavior: 'smooth'
+		});
+
+		// localName=main
+		// console.log('el.current.localName = ', el.current.localName);
+		// id=main
+		// console.log('el.current.id = ', el.current.id);
+
+		if (el.current.localName === 'header') {
+			// went to top
+			// hide back to top button
+			const btnBackToTop = document.getElementById('back-to-top');
+			btnBackToTop.style.display = '';
+		}
+
+		if (el.current.localName === 'main') {
+			// went to searchResults
+			// show back to top button
+			const btnBackToTop = document.getElementById('back-to-top');
+			btnBackToTop.style.display = 'block';
+		}
+	};
+
+	/*
+	goBackToTop = () => {
+		window.scrollTo({
+			top: 0
+		});
 		// hide back to top button
 		const btnBackToTop = document.getElementById('back-to-top');
 		btnBackToTop.style.display = '';
 	};
-
-	goToResults = event => {
-		scrollTo(document.getElementById('results'));
-		// show the back to top button, hidden by default via stylesheet
-		const btnBackToTop = document.getElementById('back-to-top');
-		btnBackToTop.style.display = 'block';
-	};
+	*/
 
 	render() {
 		return (
 			<>
-				<header id="head">
+				<header id="head" ref={this.ref_SearchForm}>
 					<Search updateResults={data => this.updateResults(data)} />
 				</header>
 
-				<main>
+				<main id="main" ref={this.ref_SearchResults}>
 					{this.state.searchResults.length > 0 ? (
-						<Results
-							searchResults={this.state.searchResults}
-							goToResults={this.goToResults}
-						/>
+						<Results searchResults={this.state.searchResults} />
 					) : null}
 				</main>
 
 				<footer>
 					{this.state.searchResults.length > 0 ? (
-						<button
-							id="back-to-top"
-							className="back-to-top"
-							onClick={this.backToTop}
-						>
-							<img
-								src="https://img.icons8.com/color/48/000000/circled-chevron-up.png"
-								alt="Back to Top"
-							/>
-						</button>
+						<BackToTop
+							goBackToTop={() => this.scrollToRef(this.ref_SearchForm)}
+						/>
 					) : null}
 					<span>
 						<a
