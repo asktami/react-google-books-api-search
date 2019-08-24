@@ -48,7 +48,7 @@ export class Item extends React.Component {
 			<li className="item">
 				<div className="item-header">
 					<div className="item-subhead">
-						{book.volumeInfo.title}
+						<h3>{book.volumeInfo.title}</h3>
 						<br />
 						Author: {authorList}
 						<br />
