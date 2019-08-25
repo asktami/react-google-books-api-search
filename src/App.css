@@ -149,6 +149,10 @@ input {
 	margin: 20px 0;
 }
 
+input[type='text'] {
+	text-align: center;
+}
+
 /*
 input:focus {
  outline: 3px solid ghostwhite;
