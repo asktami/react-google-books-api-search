@@ -49,37 +49,14 @@ class App extends React.Component {
 		this.setState({
 			searchResults: [data]
 		});
-
-		// go to searchResults
 		this.scrollToRef(this.ref_SearchResults);
 	};
 
-	// General scroll to element function
 	scrollToRef = el => {
 		window.scrollTo({
 			top: el.current.offsetTop,
 			behavior: 'smooth'
 		});
-
-		// *****************************************
-		// replaced with handleScroll
-		// if (el.current.localName === 'header') {
-		// 	// went to top
-		// 	// hide back to top button
-		// 	// btnBackToTop.style.display = '';
-		// 	this.setState({
-		// 		showBackToTop: false
-		// 	});
-		// }
-
-		// if (el.current.localName === 'main') {
-		// 	// went to searchResults
-		// 	// show back to top button
-		// 	// btnBackToTop.style.display = 'block';
-		// 	this.setState({
-		// 		showBackToTop: true
-		// 	});
-		// }
 	};
 
 	render() {
