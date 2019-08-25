@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-google-books-api-search/static/css/main.5977a802.chunk.css",
+    "main.css": "/react-google-books-api-search/static/css/main.b9caa072.chunk.css",
     "main.js": "/react-google-books-api-search/static/js/main.698cfb2d.chunk.js",
     "main.js.map": "/react-google-books-api-search/static/js/main.698cfb2d.chunk.js.map",
     "runtime~main.js": "/react-google-books-api-search/static/js/runtime~main.e0bb40fc.js",
@@ -8,9 +8,9 @@
     "static/js/2.331f20f9.chunk.js": "/react-google-books-api-search/static/js/2.331f20f9.chunk.js",
     "static/js/2.331f20f9.chunk.js.map": "/react-google-books-api-search/static/js/2.331f20f9.chunk.js.map",
     "index.html": "/react-google-books-api-search/index.html",
-    "precache-manifest.94ad7f114f1f8cc11943818c607bff32.js": "/react-google-books-api-search/precache-manifest.94ad7f114f1f8cc11943818c607bff32.js",
+    "precache-manifest.c602ffb8cba100e91d65dd5eca707f7b.js": "/react-google-books-api-search/precache-manifest.c602ffb8cba100e91d65dd5eca707f7b.js",
     "service-worker.js": "/react-google-books-api-search/service-worker.js",
-    "static/css/main.5977a802.chunk.css.map": "/react-google-books-api-search/static/css/main.5977a802.chunk.css.map",
+    "static/css/main.b9caa072.chunk.css.map": "/react-google-books-api-search/static/css/main.b9caa072.chunk.css.map",
     "static/media/App.css": "/react-google-books-api-search/static/media/ria-puskas-OobxlWxuLaA-unsplash.a1499d5c.jpg"
   }
 }
