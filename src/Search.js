@@ -1,5 +1,9 @@
 import React from 'react';
 
+// using trackPromise so can use LoadingIndicator
+import { trackPromise } from 'react-promise-tracker';
+import LoadingIndicator from './LoadingIndicator/LoadingIndicator';
+
 const printTypes = ['all', 'books', 'magazines'];
 const bookTypes = ['partial', 'full', 'free-ebooks', 'paid-ebooks', 'ebooks'];
 
@@ -23,7 +27,6 @@ export class Search extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		this.fetchBooks();
-		// show results when click search
 	}
 
 	fetchBooks = () => {
@@ -32,25 +35,26 @@ export class Search extends React.Component {
 		// console.log(getURL);
 		// console.log(JSON.stringify(this.state.searchTerm, null, 2));
 
-		fetch(getURL)
-			.then(res => {
-				if (!res.ok) {
-					throw new Error('Something went wrong, please try again later.');
-				}
-				return res;
-			})
-			.then(res => res.json())
-			.then(data => {
-				this.props.updateResults(data);
-				this.setState({
-					error: null
-				});
-			})
-			.catch(err => {
-				this.setState({
-					error: err.message
-				});
-			});
+		trackPromise(
+			fetch(getURL)
+				.then(res => {
+					if (!res.ok) {
+						throw new Error('Something went wrong, please try again later.');
+					}
+					return res;
+				})
+				.then(res => {
+					return res.json();
+				})
+				.then(data => {
+					this.props.updateResults(data);
+				})
+				.catch(err => {
+					this.setState({
+						error: err.message
+					});
+				})
+		);
 	};
 
 	render() {
@@ -115,6 +119,8 @@ export class Search extends React.Component {
 				<p id="error-message" className="error-message">
 					{this.state.error}
 				</p>
+
+				<LoadingIndicator />
 			</div>
 		);
 	}
