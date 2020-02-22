@@ -6,7 +6,7 @@
 - Allow filters such as type of book or whether the book is a free ebook or not.
 - Display the search result in list and optionally allow the user to click a result to see further details of the book.
 - Use the Google Books API to perform the search
-
+- Hosted on Github Pages
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
